@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registrasi Vaksinasi Internasional — Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="bg-white text-slate-900">
+  <!-- Top Info Bar (mirip Madula) -->
+  <div class="bg-slate-950 text-white/80">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex flex-col gap-2 py-2 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/10">📍</span>
+            <span>Jl. Contoh No. 123, Jakarta</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/10">📞</span>
+            <span>021-0000-0000</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/10">⏰</span>
+            <span>Senin–Jumat 09.00–16.00</span>
+          </div>
+        </div>
+        <div class="hidden sm:block">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/10">✦</span>
+            <span class="font-semibold text-white">Pelayanan ICV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#" class="flex items-center gap-3">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white font-extrabold">K</span>
+          <div class="leading-tight">
+            <div class="font-extrabold tracking-tight">SINKARKES</div>
+            <div class="text-xs text-slate-500 -mt-0.5">Vaksinasi Internasional</div>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-700">
+          <div class="relative" data-dd>
+            <button class="flex items-center gap-2 hover:text-slate-900" type="button" data-dd-btn>
+              Home <span class="text-slate-400">▾</span>
+            </button>
+            <div class="absolute left-0 mt-3 hidden w-48 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg" data-dd-menu>
+              <a class="block rounded-xl px-3 py-2 hover:bg-slate-50" href="#">Home 1</a>
+              <a class="block rounded-xl px-3 py-2 hover:bg-slate-50" href="#">Home 2</a>
+              <a class="block rounded-xl px-3 py-2 hover:bg-slate-50" href="#">Home 3</a>
+            </div>
+          </div>
+
+          <a class="hover:text-slate-900" href="#about">About</a>
+
+          <div class="relative" data-dd>
+            <button class="flex items-center gap-2 hover:text-slate-900" type="button" data-dd-btn>
+              Layanan <span class="text-slate-400">▾</span>
+            </button>
+            <div class="absolute left-0 mt-3 hidden w-56 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg" data-dd-menu>
+              <a class="block rounded-xl px-3 py-2 hover:bg-slate-50" href="#services">Daftar Layanan</a>
+              <a class="block rounded-xl px-3 py-2 hover:bg-slate-50" href="#register">Registrasi ICV</a>
+              <a class="block rounded-xl px-3 py-2 hover:bg-slate-50" href="#contact">Kontak</a>
+            </div>
+          </div>
+
+          <a class="hover:text-slate-900" href="#contact">Contact</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <a href="#register"
+             class="hidden sm:inline-flex items-center justify-center rounded-2xl bg-slate-900 px-4 py-2 text-sm font-bold text-white hover:bg-slate-800">
+            Book Appointment
+          </a>
+          <button class="lg:hidden inline-flex items-center justify-center rounded-2xl border border-slate-200 px-3 py-2 text-sm font-bold"
+                  id="btnMobile">
+            Menu
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileNav" class="hidden pb-4 lg:hidden">
+        <div class="grid gap-2 text-sm font-semibold">
+          <a class="rounded-2xl border border-slate-200 px-3 py-2 hover:bg-slate-50" href="#">Home</a>
+          <a class="rounded-2xl border border-slate-200 px-3 py-2 hover:bg-slate-50" href="#about">About</a>
+          <a class="rounded-2xl border border-slate-200 px-3 py-2 hover:bg-slate-50" href="#services">Layanan</a>
+          <a class="rounded-2xl border border-slate-200 px-3 py-2 hover:bg-slate-50" href="#register">Registrasi</a>
+          <a class="rounded-2xl border border-slate-200 px-3 py-2 hover:bg-slate-50" href="#contact">Contact</a>
+          <a class="rounded-2xl bg-slate-900 px-3 py-2 text-white text-center" href="#register">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero (layout 2 kolom mirip contoh) -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-slate-50 to-white"></div>
+    <div class="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
+        <div class="lg:col-span-7">
+          <p class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700">
+            <span class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white">✓</span>
+            Pelayanan Vaksinasi Internasional (ICV)
+          </p>
+
+          <h1 class="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Stay Informed & Sehat<br class="hidden sm:block" />
+            untuk Perjalanan Internasional
+          </h1>
+
+          <p class="mt-4 max-w-xl text-slate-600">
+            Registrasi online untuk vaksinasi internasional. Isi data sesuai dokumen, pilih jadwal, dan upload paspor.
+          </p>
+
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#register"
+               class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 font-bold text-white hover:bg-slate-800">
+              Daftar Sekarang
+            </a>
+            <a href="#services"
+               class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-6 py-3 font-bold text-slate-800 hover:bg-slate-50">
+              Lihat Layanan
+            </a>
+          </div>
+
+          <!-- mini gallery placeholder (mirip hero gambar kecil di Madula) -->
+          <div class="mt-8 flex items-center gap-3">
+            <div class="flex -space-x-3">
+              <div class="h-10 w-10 rounded-2xl border-2 border-white bg-gradient-to-br from-blue-200 to-blue-500"></div>
+              <div class="h-10 w-10 rounded-2xl border-2 border-white bg-gradient-to-br from-emerald-200 to-emerald-500"></div>
+              <div class="h-10 w-10 rounded-2xl border-2 border-white bg-gradient-to-br from-amber-200 to-amber-500"></div>
+            </div>
+            <div class="text-sm">
+              <div class="font-extrabold">2000+</div>
+              <div class="text-slate-500">Experience Team</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="text-xs font-bold text-slate-500">Quick Check</div>
+                <div class="text-xl font-extrabold">Cek Jadwal</div>
+              </div>
+              <span class="inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-700">Online</span>
+            </div>
+
+            <div class="mt-5 grid gap-4">
+              <label class="text-sm font-semibold">
+                Tanggal Keberangkatan
+                <input type="date" class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+              </label>
+
+              <label class="text-sm font-semibold">
+                Lokasi (Balai Karkes)
+                <select class="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200">
+                  <option>Pilih lokasi</option>
+                  <option>Soekarno Hatta</option>
+                  <option>Tanjung Priok</option>
+                  <option>Surabaya</option>
+                </select>
+              </label>
+
+              <a href="#register"
+                 class="inline-flex items-center justify-center rounded-2xl bg-emerald-600 px-5 py-3 font-extrabold text-white hover:bg-emerald-700">
+                Lanjut Registrasi
+              </a>
+
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+                <b>Catatan:</b> Tanggal pelayanan disarankan minimal 14 hari sebelum keberangkatan.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="mt-10 grid grid-cols-2 gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:grid-cols-4">
+        <div>
+          <div class="text-2xl font-extrabold">10K+</div>
+          <div class="text-sm text-slate-500">Patients Served</div>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold">1M+</div>
+          <div class="text-sm text-slate-500">Reports Delivered</div>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold">50+</div>
+          <div class="text-sm text-slate-500">Expert Specialists</div>
+        </div>
+        <div>
+          <div class="text-2xl font-extrabold">99%</div>
+          <div class="text-sm text-slate-500">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services cards -->
+  <section id="services" class="mx-auto max-w-6xl px-4 py-12">
+    <div class="flex items-end justify-between gap-6">
+      <div>
+        <p class="text-xs font-extrabold tracking-widest text-slate-500">SERVICES</p>
+        <h2 class="mt-2 text-3xl font-extrabold tracking-tight">Layanan Utama</h2>
+        <p class="mt-2 text-slate-600">Beberapa layanan yang umum dibutuhkan sebelum perjalanan.</p>
+      </div>
+      <a href="#register" class="hidden sm:inline-flex rounded-2xl border border-slate-200 bg-white px-4 py-2 font-bold hover:bg-slate-50">
+        Book Appointment
+      </a>
+    </div>
+
+    <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Card -->
+      <a href="#register" class="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md transition">
+        <div class="flex items-center justify-between">
+          <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white text-xl">🧾</div>
+          <div class="text-3xl font-extrabold text-slate-200 group-hover:text-slate-300">01</div>
+        </div>
+        <div class="mt-4 text-lg font-extrabold group-hover:text-slate-900">Registrasi ICV</div>
+        <p class="mt-2 text-sm text-slate-600">Pendaftaran vaksinasi internasional dengan upload paspor.</p>
+      </a>
+
+      <a href="#register" class="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md transition">
+        <div class="flex items-center justify-between">
+          <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-600 text-white text-xl">💉</div>
+          <div class="text-3xl font-extrabold text-slate-200 group-hover:text-slate-300">02</div>
+        </div>
+        <div class="mt-4 text-lg font-extrabold">Vaksinasi</div>
+        <p class="mt-2 text-sm text-slate-600">Meningitis, Yellow Fever, Polio (sesuai kebutuhan).</p>
+      </a>
+
+      <a href="#register" class="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md transition">
+        <div class="flex items-center justify-between">
+          <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500 text-white text-xl">🩺</div>
+          <div class="text-3xl font-extrabold text-slate-200 group-hover:text-slate-300">03</div>
+        </div>
+        <div class="mt-4 text-lg font-extrabold">Health Screening</div>
+        <p class="mt-2 text-sm text-slate-600">Skrining kesehatan sebelum tindakan.</p>
+      </a>
+
+      <a href="#register" class="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md transition">
+        <div class="flex items-center justify-between">
+          <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-600 text-white text-xl">📘</div>
+          <div class="text-3xl font-extrabold text-slate-200 group-hover:text-slate-300">04</div>
+        </div>
+        <div class="mt-4 text-lg font-extrabold">Pengesahan ICV</div>
+        <p class="mt-2 text-sm text-slate-600">Penerbitan baru / pengesahan dokumen.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="bg-slate-50 border-y border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-center">
+        <div class="lg:col-span-6">
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="aspect-[16/10] rounded-2xl bg-gradient-to-br from-slate-200 to-slate-400"></div>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <div class="aspect-[16/10] rounded-2xl bg-gradient-to-br from-emerald-200 to-emerald-500"></div>
+              <div class="aspect-[16/10] rounded-2xl bg-gradient-to-br from-amber-200 to-amber-500"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <p class="text-xs font-extrabold tracking-widest text-slate-500">ABOUT US</p>
+          <h2 class="mt-2 text-3xl font-extrabold tracking-tight">Compassionate Care, Trusted Expertise</h2>
+          <p class="mt-3 text-slate-600">
+            Pelayanan kesehatan untuk kebutuhan perjalanan internasional, dengan proses registrasi yang lebih cepat dan rapi.
+          </p>
+
+          <div class="mt-6 space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-slate-200">✅</span>
+              <div>
+                <div class="font-extrabold">Dokter & petugas terlatih</div>
+                <div class="text-sm text-slate-600">Prosedur sesuai standar pelayanan.</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-slate-200">🔒</span>
+              <div>
+                <div class="font-extrabold">Data aman & terverifikasi</div>
+                <div class="text-sm text-slate-600">Input mengikuti dokumen resmi.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#register"
+               class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 font-extrabold text-white hover:bg-slate-800">
+              More About Us
+            </a>
+            <div class="rounded-2xl border border-slate-200 bg-white px-5 py-3">
+              <div class="text-xs text-slate-500 font-bold">Call Service</div>
+              <div class="font-extrabold">021-0000-0000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get In Touch / Registration Form (vibe mirip “Book Appointment”) -->
+  <section id="register" class="mx-auto max-w-6xl px-4 py-12">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
+      <div class="lg:col-span-5">
+        <p class="text-xs font-extrabold tracking-widest text-slate-500">GET IN TOUCH</p>
+        <h2 class="mt-2 text-3xl font-extrabold tracking-tight">Stay Connected for Better Health</h2>
+        <p class="mt-3 text-slate-600">
+          Isi form berikut untuk registrasi vaksinasi internasional. Field bertanda <span class="text-red-600 font-extrabold">*</span> wajib.
+        </p>
+
+        <div class="mt-6 rounded-3xl border border-slate-200 bg-slate-50 p-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold text-slate-500">Emergency Call</div>
+              <div class="text-xl font-extrabold">021-0000-0000</div>
+            </div>
+            <div class="h-12 w-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center text-xl">☎</div>
+          </div>
+          <div class="mt-4 text-sm text-slate-600">
+            Saran: pilih tanggal pelayanan minimal 14 hari sebelum keberangkatan.
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <form id="regForm" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-xs font-bold text-slate-500">BOOK AN APPOINTMENT</div>
+              <div class="text-2xl font-extrabold">Registrasi Vaksinasi Internasional</div>
+            </div>
+            <span class="inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-700">Online</span>
+          </div>
+
+          <!-- Section: Jadwal -->
+          <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <label class="text-sm font-bold">
+              Tanggal Keberangkatan <span class="text-red-600">*</span>
+              <input id="tglBerangkat" required type="date"
+                class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+              <span class="mt-1 hidden text-xs text-red-600" data-err="tglBerangkat">Wajib diisi.</span>
+            </label>
+
+            <label class="text-sm font-bold">
+              Tanggal Pelayanan <span class="text-red-600">*</span>
+              <input id="tglPelayanan" required type="date"
+                class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+              <span class="mt-1 hidden text-xs text-red-600" data-err="tglPelayanan">Wajib diisi.</span>
+              <span class="mt-1 hidden text-xs text-red-600" data-err="rule14">Minimal 14 hari sebelum keberangkatan.</span>
+            </label>
+
+            <label class="text-sm font-bold">
+              Balai Karkes <span class="text-red-600">*</span>
+              <select id="balai" required
+                class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200">
+                <option value="" selected disabled>Pilih Balai Karkes</option>
+                <option>Soekarno Hatta</option>
+                <option>Tanjung Priok</option>
+                <option>Surabaya</option>
+                <option>Denpasar</option>
+                <option>Medan</option>
+              </select>
+              <span class="mt-1 hidden text-xs text-red-600" data-err="balai">Wajib dipilih.</span>
+            </label>
+
+            <label class="text-sm font-bold">
+              Induk/Wilker <span class="text-red-600">*</span>
+              <select id="wilker" required
+                class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200">
+                <option value="" selected disabled>Pilih Induk/Wilker</option>
+                <option>Induk</option>
+                <option>Wilker 1</option>
+                <option>Wilker 2</option>
+              </select>
+              <span class="mt-1 hidden text-xs text-red-600" data-err="wilker">Wajib dipilih.</span>
+            </label>
+
+            <label class="text-sm font-bold">
+              Tujuan Vaksinasi <span class="text-red-600">*</span>
+              <select id="tujuan" required
+                class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200">
+                <option value="" selected disabled>Pilih tujuan</option>
+                <option>Umroh</option>
+                <option>TKI</option>
+                <option>Perjalanan Lainnya</option>
+              </select>
+              <span class="mt-1 hidden text-xs text-red-600" data-err="tujuan">Wajib dipilih.</span>
+            </label>
+
+            <label class="text-sm font-bold">
+              Kebangsaan <span class="text-red-600">*</span>
+              <select id="kebangsaan" required
+                class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200">
+                <option value="" selected disabled>Pilih kebangsaan</option>
+                <option>INDONESIA</option>
+                <option>MALAYSIA</option>
+                <option>SINGAPORE</option>
+                <option>UNITED STATES</option>
+              </select>
+              <span class="mt-1 hidden text-xs text-red-600" data-err="kebangsaan">Wajib dipilih.</span>
+            </label>
+          </div>
+
+          <!-- Vaccine checkboxes -->
+          <div class="mt-5 rounded-3xl border border-slate-200 bg-slate-50 p-5">
+            <div class="text-sm font-extrabold">Jenis Permohonan (Vaksin)</div>
+            <div class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 text-sm text-slate-700">
+              <label class="flex items-center gap-2">
+                <input type="checkbox" class="h-4 w-4 rounded border-slate-300"> MENINGITIS MENINGOCOCCUS
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" class="h-4 w-4 rounded border-slate-300"> YELLOW FEVER
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" class="h-4 w-4 rounded border-slate-300"> POLIO
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" class="h-4 w-4 rounded border-slate-300"> COVID-19
+              </label>
+            </div>
+          </div>
+
+          <!-- Passport upload -->
+          <div class="mt-5">
+            <label class="text-sm font-bold">
+              File Passport (jpg/jpeg/png) <span class="text-red-600">*</span>
+              <input id="passportFile" required type="file" accept=".jpg,.jpeg,.png"
+                class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3
+                       file:mr-3 file:rounded-xl file:border-0 file:bg-slate-900 file:px-4 file:py-2
+                       file:text-sm file:font-extrabold file:text-white hover:file:bg-slate-800"/>
+              <span class="mt-1 hidden text-xs text-red-600" data-err="passportFile">Wajib diunggah.</span>
+            </label>
+            <div class="mt-2 text-xs text-slate-500 font-semibold">
+              Dipilih: <span id="passportName" class="font-extrabold text-slate-700">—</span>
+            </div>
+          </div>
+
+          <!-- Data Diri -->
+          <div class="mt-6 border-t border-slate-200 pt-6">
+            <div class="text-lg font-extrabold">Data Diri</div>
+
+            <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <label class="text-sm font-bold">
+                No. Passport <span class="text-red-600">*</span>
+                <input id="noPassport" required type="text" placeholder="Contoh: X1234567"
+                  class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+                <span class="mt-1 hidden text-xs text-red-600" data-err="noPassport">Wajib diisi.</span>
+              </label>
+
+              <label class="text-sm font-bold">
+                NIK <span class="text-red-600">*</span>
+                <input id="nik" required type="text" inputmode="numeric" maxlength="16" placeholder="16 digit"
+                  class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+                <span class="mt-1 hidden text-xs text-red-600" data-err="nik">Wajib diisi (16 digit).</span>
+              </label>
+
+              <label class="text-sm font-bold md:col-span-2">
+                Nama Lengkap <span class="text-red-600">*</span>
+                <input id="nama" required type="text"
+                  class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+                <span class="mt-1 hidden text-xs text-red-600" data-err="nama">Wajib diisi.</span>
+              </label>
+
+              <div class="text-sm font-bold">
+                Jenis Kelamin <span class="text-red-600">*</span>
+                <div class="mt-2 flex gap-4 text-sm text-slate-700">
+                  <label class="flex items-center gap-2">
+                    <input required type="radio" name="jk" class="h-4 w-4 border-slate-300"> Laki-Laki
+                  </label>
+                  <label class="flex items-center gap-2">
+                    <input required type="radio" name="jk" class="h-4 w-4 border-slate-300"> Perempuan
+                  </label>
+                </div>
+                <span class="mt-1 hidden text-xs text-red-600" data-err="jk">Pilih salah satu.</span>
+              </div>
+
+              <label class="text-sm font-bold">
+                Tanggal Lahir <span class="text-red-600">*</span>
+                <input id="tglLahir" required type="date"
+                  class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+                <span class="mt-1 hidden text-xs text-red-600" data-err="tglLahir">Wajib diisi.</span>
+              </label>
+
+              <label class="text-sm font-bold">
+                No Handphone <span class="text-red-600">*</span>
+                <input id="hp" required type="tel" placeholder="08xxxxxxxxxx"
+                  class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+                <span class="mt-1 hidden text-xs text-red-600" data-err="hp">Wajib diisi.</span>
+              </label>
+
+              <label class="text-sm font-bold">
+                Email <span class="text-red-600">*</span>
+                <input id="email" required type="email" placeholder="nama@email.com"
+                  class="mt-2 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-200"/>
+                <span class="mt-1 hidden text-xs text-red-600" data-err="email">Email tidak valid.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div class="text-xs text-slate-500">
+              Dengan mengirim, Anda menyatakan data benar (demo UI).
+            </div>
+            <button type="submit"
+              class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 font-extrabold text-white hover:bg-slate-800">
+              Kirim Permohonan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="border-t border-slate-200 bg-slate-950 text-white">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 font-extrabold">K</span>
+            <div class="font-extrabold">SINKARKES</div>
+          </div>
+          <p class="mt-4 text-sm text-white/70">
+            Komitmen pelayanan kesehatan pelabuhan dengan proses registrasi yang rapi, aman, dan cepat.
+          </p>
+        </div>
+
+        <div>
+          <div class="text-sm font-extrabold">Link</div>
+          <div class="mt-4 grid gap-2 text-sm text-white/70">
+            <a href="#about" class="hover:text-white">About Us</a>
+            <a href="#services" class="hover:text-white">Services</a>
+            <a href="#register" class="hover:text-white">Appointment</a>
+            <a href="#contact" class="hover:text-white">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-sm font-extrabold">Contact Us</div>
+          <div class="mt-4 space-y-3 text-sm text-white/70">
+            <div><span class="font-bold text-white">Address:</span> Jl. Contoh No. 123, Jakarta</div>
+            <div><span class="font-bold text-white">Phone:</span> 021-0000-0000</div>
+            <div><span class="font-bold text-white">Email:</span> info@example.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-white/10 pt-6 text-xs text-white/60">
+        Copyright © 2026 — Demo UI Tailwind
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const btnMobile = document.getElementById('btnMobile');
+    const mobileNav = document.getElementById('mobileNav');
+    btnMobile?.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+
+    // Dropdowns (desktop)
+    document.querySelectorAll('[data-dd]').forEach(dd => {
+      const btn = dd.querySelector('[data-dd-btn]');
+      const menu = dd.querySelector('[data-dd-menu]');
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelectorAll('[data-dd-menu]').forEach(m => { if(m !== menu) m.classList.add('hidden'); });
+        menu.classList.toggle('hidden');
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('[data-dd-menu]').forEach(m => m.classList.add('hidden'));
+    });
+
+    // Passport filename
+    const passportFile = document.getElementById('passportFile');
+    const passportName = document.getElementById('passportName');
+    passportFile?.addEventListener('change', (e) => {
+      const f = e.target.files?.[0];
+      passportName.textContent = f ? f.name : '—';
+    });
+
+    // Rule: pelayanan minimal 14 hari sebelum berangkat
+    const tglBerangkat = document.getElementById('tglBerangkat');
+    const tglPelayanan = document.getElementById('tglPelayanan');
+
+    const showErr = (key, on) => {
+      const el = document.querySelector(`[data-err="${key}"]`);
+      if(!el) return;
+      el.classList.toggle('hidden', !on);
+    };
+
+    const daysBetween = (aIso, bIso) => {
+      const a = new Date(aIso + 'T00:00:00');
+      const b = new Date(bIso + 'T00:00:00');
+      return Math.round((b - a) / (1000*60*60*24));
+    };
+
+    function validateRule14(){
+      showErr('rule14', false);
+      tglPelayanan.classList.remove('border-red-400');
+
+      if(!tglBerangkat.value || !tglPelayanan.value) return true;
+      const diff = daysBetween(tglPelayanan.value, tglBerangkat.value);
+      const ok = diff >= 14;
+      if(!ok){
+        showErr('rule14', true);
+        tglPelayanan.classList.add('border-red-400');
+      }
+      return ok;
+    }
+    tglBerangkat?.addEventListener('change', validateRule14);
+    tglPelayanan?.addEventListener('change', validateRule14);
+
+    // Basic validation
+    document.getElementById('regForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // reset errors
+      document.querySelectorAll('[data-err]').forEach(x => x.classList.add('hidden'));
+      document.querySelectorAll('input, select').forEach(x => x.classList.remove('border-red-400'));
+
+      let ok = true;
+      const reqIds = ['tglBerangkat','tglPelayanan','balai','wilker','tujuan','kebangsaan','passportFile','noPassport','nik','nama','tglLahir','hp','email'];
+      reqIds.forEach(id => {
+        const el = document.getElementById(id);
+        const hasVal = (el.type === 'file') ? (el.files && el.files.length) : !!el.value;
+        if(!hasVal){
+          ok = false;
+          el.classList.add('border-red-400');
+          showErr(id, true);
+        }
+      });
+
+      // email validity
+      const email = document.getElementById('email');
+      if(email.value && !email.checkValidity()){
+        ok = false;
+        email.classList.add('border-red-400');
+        showErr('email', true);
+      }
+
+      // nik length
+      const nik = document.getElementById('nik');
+      if(nik.value && nik.value.length < 16){
+        ok = false;
+        nik.classList.add('border-red-400');
+        showErr('nik', true);
+      }
+
+      // gender
+      const jkChecked = Array.from(document.querySelectorAll('input[name="jk"]')).some(r => r.checked);
+      if(!jkChecked){
+        ok = false;
+        showErr('jk', true);
+      }
+
+      // rule 14 days
+      if(!validateRule14()) ok = false;
+
+      if(!ok){
+        alert('Mohon lengkapi field wajib dan perbaiki error.');
+        return;
+      }
+
+      alert('Demo UI: Permohonan terkirim (belum terhubung backend).');
+    });
+  </script>
+</body>
+</html>
