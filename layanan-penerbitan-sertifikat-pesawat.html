@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layanan Penerbitan Sertifikat Pesawat — SINKARKES</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style> html { scroll-behavior: smooth; } </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+  <!-- Top right login -->
+  <div class="relative bg-white">
+    <div class="absolute right-4 top-4 sm:right-6 sm:top-6">
+      <a href="#login"
+         class="inline-flex items-center gap-2 text-sm font-semibold text-sky-600 hover:text-sky-700">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.41 0-8 2-8 4.5V21h16v-2.5C20 16 16.41 14 12 14Z"/>
+        </svg>
+        Login user Balai Karkes
+      </a>
+    </div>
+
+    <!-- Header logo center -->
+    <header class="pt-12 sm:pt-14">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="flex flex-col items-center text-center">
+          <div class="flex items-center justify-center gap-4">
+            <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-sky-500"></div>
+            <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600"></div>
+          </div>
+
+          <a href="home.html" class="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight">
+            <span class="text-slate-800">SIN</span><span class="text-sky-500">KARKES</span>
+          </a>
+
+          <div class="mt-4 h-px w-full max-w-3xl bg-sky-300/60"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Breadcrumb + Title -->
+    <section class="mx-auto max-w-6xl px-4 py-6">
+      <nav class="text-sm text-slate-600">
+        <a href="home.html" class="hover:text-slate-900">Pelayanan</a>
+        <span class="mx-2">/</span>
+        <span class="font-semibold text-slate-900">Layanan Penerbitan Sertifikat Pesawat</span>
+      </nav>
+
+      <div class="mt-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 class="text-2xl font-extrabold tracking-tight">Layanan Penerbitan Sertifikat Pesawat</h1>
+          <p class="text-slate-600">Permohonan penerbitan/validasi sertifikat kesehatan pesawat</p>
+        </div>
+        <div class="sm:text-right">
+          <div class="text-xs text-slate-500">Tanggal Permohonan</div>
+          <div class="font-semibold" id="tglPermohonan">—</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Content -->
+  <main class="mx-auto max-w-6xl px-4 pb-12">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <!-- Sidebar -->
+      <aside class="lg:col-span-4 space-y-6">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h2 class="text-lg font-extrabold">Informasi Layanan</h2>
+              <p class="mt-1 text-sm text-slate-600">Ringkasan persyaratan & ketentuan.</p>
+            </div>
+            <span class="inline-flex rounded-full bg-[#173E6B] px-3 py-1 text-xs font-extrabold text-white">
+              PESAWAT
+            </span>
+          </div>
+
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
+            <li>Permohonan diajukan oleh operator/agen/PIC yang bertanggung jawab.</li>
+            <li>Pastikan dokumen pendukung jelas dan sesuai format.</li>
+            <li>Petugas dapat meminta dokumen tambahan saat verifikasi.</li>
+            <li>Jadwal inspeksi mengikuti ketersediaan petugas & lokasi.</li>
+          </ul>
+
+          <div class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+            <b>Catatan:</b> Ini UI demo. Aturan detail (jenis sertifikat & syarat) bisa disesuaikan ke SOP internal.
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="text-lg font-extrabold">Dokumen Umum</h2>
+          <ul class="mt-4 space-y-2 text-sm text-slate-600">
+            <li class="flex gap-2"><span class="mt-0.5">•</span> Surat permohonan / mandat operator</li>
+            <li class="flex gap-2"><span class="mt-0.5">•</span> Data pesawat (registrasi, tipe, operator)</li>
+            <li class="flex gap-2"><span class="mt-0.5">•</span> Rencana penerbangan / manifest (bila diperlukan)</li>
+            <li class="flex gap-2"><span class="mt-0.5">•</span> Dokumen sanitasi / disinfeksi (bila diperlukan)</li>
+          </ul>
+          <p class="mt-3 text-xs text-slate-500">Format file: PDF/JPG/PNG. Maks 5MB per file (contoh UI).</p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="text-lg font-extrabold">Alur Proses</h2>
+
+          <div class="mt-4 space-y-2">
+            <details class="group rounded-xl border border-slate-200 p-4" open>
+              <summary class="flex cursor-pointer list-none items-center justify-between">
+                <span class="font-semibold">1) Pengajuan Online</span>
+                <span class="text-slate-500 transition group-open:rotate-180">⌄</span>
+              </summary>
+              <ol class="mt-3 list-decimal space-y-1 pl-5 text-sm text-slate-600">
+                <li>Isi form permohonan sertifikat pesawat.</li>
+                <li>Upload dokumen pendukung.</li>
+                <li>Petugas melakukan verifikasi awal.</li>
+              </ol>
+            </details>
+
+            <details class="group rounded-xl border border-slate-200 p-4">
+              <summary class="flex cursor-pointer list-none items-center justify-between">
+                <span class="font-semibold">2) Inspeksi / Pemeriksaan</span>
+                <span class="text-slate-500 transition group-open:rotate-180">⌄</span>
+              </summary>
+              <ol class="mt-3 list-decimal space-y-1 pl-5 text-sm text-slate-600">
+                <li>Penjadwalan pemeriksaan sesuai lokasi.</li>
+                <li>Validasi data pesawat & dokumen.</li>
+                <li>Pemeriksaan sanitasi (jika diperlukan).</li>
+              </ol>
+            </details>
+
+            <details class="group rounded-xl border border-slate-200 p-4">
+              <summary class="flex cursor-pointer list-none items-center justify-between">
+                <span class="font-semibold">3) Penerbitan Sertifikat</span>
+                <span class="text-slate-500 transition group-open:rotate-180">⌄</span>
+              </summary>
+              <ol class="mt-3 list-decimal space-y-1 pl-5 text-sm text-slate-600">
+                <li>Sertifikat diterbitkan/diunduh setelah disetujui.</li>
+                <li>Notifikasi status via email (jika diaktifkan).</li>
+              </ol>
+            </details>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <section class="lg:col-span-8">
+        <form id="planeForm" class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <!-- Header -->
+          <div class="p-5">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h2 class="text-lg font-extrabold">Form Permohonan Sertifikat Pesawat</h2>
+                <p class="mt-1 text-sm text-slate-600">
+                  Field bertanda <span class="text-red-600 font-bold">*</span> wajib diisi.
+                </p>
+              </div>
+              <span class="inline-flex items-center rounded-full bg-[#173E6B] px-3 py-1 text-xs font-extrabold text-white">
+                AIRCRAFT CERT
+              </span>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-200"></div>
+
+          <div class="p-5 space-y-10">
+            <!-- Section: Operator -->
+            <section>
+              <h3 class="text-base font-extrabold">Data Operator</h3>
+              <p class="mt-1 text-sm text-slate-600">Isi data operator/agen yang mengajukan permohonan.</p>
+
+              <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label class="text-sm font-bold">Nama Operator / Maskapai <span class="text-red-600">*</span></label>
+                  <input id="operatorName" required type="text" placeholder="Contoh: PT Contoh Air"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="operatorName">Wajib diisi.</p>
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">Nomor Izin / NIB (Opsional)</label>
+                  <input id="nib" type="text" placeholder="Opsional"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">Email PIC <span class="text-red-600">*</span></label>
+                  <input id="email" required type="email" placeholder="pic@operator.com"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="email">Email tidak valid.</p>
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">No. HP PIC <span class="text-red-600">*</span></label>
+                  <input id="phone" required type="tel" placeholder="08xxxxxxxxxx"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="phone">Wajib diisi.</p>
+                </div>
+
+                <div class="md:col-span-2">
+                  <label class="text-sm font-bold">Alamat Kantor Operator <span class="text-red-600">*</span></label>
+                  <textarea id="address" required rows="3"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200"></textarea>
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="address">Wajib diisi.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section: Pesawat -->
+            <section>
+              <h3 class="text-base font-extrabold">Data Pesawat</h3>
+              <p class="mt-1 text-sm text-slate-600">Isi data pesawat yang akan disertifikasi.</p>
+
+              <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label class="text-sm font-bold">Registrasi Pesawat (Tail No.) <span class="text-red-600">*</span></label>
+                  <input id="tailNo" required type="text" placeholder="Contoh: PK-ABC"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="tailNo">Wajib diisi.</p>
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">Tipe Pesawat <span class="text-red-600">*</span></label>
+                  <input id="aircraftType" required type="text" placeholder="Contoh: B737-800"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="aircraftType">Wajib diisi.</p>
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">Nomor Seri (Opsional)</label>
+                  <input id="serialNo" type="text" placeholder="Opsional"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">Kapasitas (Seat) (Opsional)</label>
+                  <input id="seat" type="number" min="0" placeholder="Opsional"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                </div>
+
+                <div class="md:col-span-2">
+                  <label class="text-sm font-bold">Jenis Sertifikat <span class="text-red-600">*</span></label>
+                  <select id="certType" required
+                    class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200">
+                    <option value="" selected disabled>Pilih jenis sertifikat</option>
+                    <option>Sertifikat Kesehatan Pesawat (Penerbitan Baru)</option>
+                    <option>Sertifikat Kesehatan Pesawat (Perpanjangan)</option>
+                    <option>Validasi / Pemeriksaan Sanitasi</option>
+                    <option>Lainnya</option>
+                  </select>
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="certType">Wajib dipilih.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section: Jadwal & Lokasi -->
+            <section>
+              <h3 class="text-base font-extrabold">Jadwal & Lokasi Pemeriksaan</h3>
+              <p class="mt-1 text-sm text-slate-600">Pilih lokasi pelayanan dan jadwal inspeksi.</p>
+
+              <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label class="text-sm font-bold">Balai Karkes <span class="text-red-600">*</span></label>
+                  <select id="balai" required
+                    class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200">
+                    <option value="" selected disabled>Pilih Balai Karkes</option>
+                    <option>Soekarno Hatta</option>
+                    <option>Tanjung Priok</option>
+                    <option>Surabaya</option>
+                    <option>Denpasar</option>
+                    <option>Medan</option>
+                  </select>
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="balai">Wajib dipilih.</p>
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">Bandara / Lokasi <span class="text-red-600">*</span></label>
+                  <input id="airport" required type="text" placeholder="Contoh: CGK / Soekarno-Hatta"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="airport">Wajib diisi.</p>
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">Tanggal Inspeksi <span class="text-red-600">*</span></label>
+                  <input id="inspectDate" required type="date"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                  <p class="mt-1 hidden text-xs text-red-600" data-err="inspectDate">Wajib diisi.</p>
+                </div>
+
+                <div>
+                  <label class="text-sm font-bold">Waktu (Opsional)</label>
+                  <input id="inspectTime" type="time"
+                    class="mt-2 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200" />
+                </div>
+              </div>
+            </section>
+
+            <!-- Section: Upload -->
+            <section>
+              <h3 class="text-base font-extrabold">Upload Dokumen</h3>
+              <p class="mt-1 text-sm text-slate-600">Upload dokumen pendukung (multi-file).</p>
+
+              <div class="mt-4">
+                <label class="text-sm font-bold">
+                  Dokumen Pendukung (PDF/JPG/PNG) <span class="text-red-600">*</span>
+                  <input id="docs" required multiple type="file" accept=".pdf,.jpg,.jpeg,.png"
+                    class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-3 py-2
+                           file:mr-3 file:rounded-lg file:border-0 file:bg-slate-900 file:px-3 file:py-2
+                           file:text-sm file:font-extrabold file:text-white hover:file:bg-slate-800"/>
+                </label>
+                <p class="mt-2 text-xs text-slate-500">
+                  Dipilih: <span id="docsName" class="font-semibold text-slate-700">—</span>
+                </p>
+                <p class="mt-1 hidden text-xs text-red-600" data-err="docs">Wajib upload minimal 1 file.</p>
+              </div>
+
+              <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+                <b>Tips:</b> Gabungkan dokumen ke PDF jika banyak file, atau unggah beberapa file sekaligus.
+              </div>
+            </section>
+
+            <!-- Section: Catatan -->
+            <section>
+              <h3 class="text-base font-extrabold">Catatan Tambahan</h3>
+              <p class="mt-1 text-sm text-slate-600">Informasi tambahan untuk petugas (opsional).</p>
+
+              <textarea id="notes" rows="4" placeholder="Contoh: Permohonan perpanjangan, jadwal preferensi, dsb."
+                class="mt-4 w-full rounded-xl border border-slate-300 px-3 py-2 outline-none focus:ring-2 focus:ring-slate-200"></textarea>
+            </section>
+          </div>
+
+          <!-- Actions -->
+          <div class="sticky bottom-0 border-t border-slate-200 bg-white/90 backdrop-blur">
+            <div class="p-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div class="text-xs text-slate-500">Pastikan data benar sebelum mengirim (demo UI).</div>
+              <div class="flex flex-col gap-2 sm:flex-row">
+                <button type="reset"
+                  class="rounded-xl border border-slate-300 bg-white px-4 py-2 font-extrabold text-slate-800 hover:bg-slate-50">
+                  Reset
+                </button>
+                <button type="submit"
+                  class="rounded-xl bg-[#173E6B] px-5 py-2 font-extrabold text-white hover:brightness-110">
+                  Kirim Permohonan
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer (same style) -->
+  <footer class="bg-[#2B2F37] text-white/70">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-4">
+        <div>
+          <div class="flex items-center gap-3 text-white">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10">🎧</span>
+            <h3 class="text-lg font-extrabold">Help Desk</h3>
+          </div>
+          <div class="mt-4 space-y-2 text-sm leading-relaxed">
+            <p>Direktorat Surveilans dan Karantina Kesehatan</p>
+            <p>Direktorat Jenderal Pencegahan dan Pengendalian Penyakit</p>
+            <p>Kementerian Kesehatan RI</p>
+            <div class="mt-4 space-y-1">
+              <p class="text-white/60">Jl. HR Rasuna Said Kav. X-5 No. 4-9</p>
+              <p class="text-white/60">Jakarta Selatan</p>
+              <a class="mt-2 inline-block font-semibold text-white hover:underline" href="#">
+                sinkarkes.kemkes.go.id
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-3 text-white">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10">👥</span>
+            <h3 class="text-lg font-extrabold">Pelayanan</h3>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a class="hover:text-white" href="layanan-vaksinasi-internasional.html">Registrasi Vaksinasi Internasional</a></li>
+            <li><a class="hover:text-white" href="#">Kontak Kami</a></li>
+            <li class="pt-3">
+              <div class="flex items-center gap-3 text-white">
+                <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10">🔒</span>
+                <h3 class="text-lg font-extrabold">SINKARKES</h3>
+              </div>
+            </li>
+            <li><a class="hover:text-white" href="#login">Login</a></li>
+            <li><a class="hover:text-white" href="#">Email</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-3 text-white">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10">🏢</span>
+            <h3 class="text-lg font-extrabold">Balai Karkes</h3>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a class="hover:text-white" href="#">Profil Balai Kekarantinaan Kesehatan</a></li>
+            <li><a class="hover:text-white" href="#">Berita</a></li>
+            <li><a class="hover:text-white" href="#">Pengumuman</a></li>
+            <li><a class="hover:text-white" href="#">Kegiatan</a></li>
+            <li><a class="hover:text-white" href="#">Referensi & Peraturan</a></li>
+            <li><a class="hover:text-white" href="#">International Health Regulations</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="flex items-center gap-3 text-white">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10">🔗</span>
+            <h3 class="text-lg font-extrabold">LINKS</h3>
+          </div>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a class="hover:text-white" href="#">Kementerian Kesehatan</a></li>
+            <li><a class="hover:text-white" href="#">Pusat Kesehatan Haji</a></li>
+            <li><a class="hover:text-white" href="#">Direktorat Bina Gizi dan KIA</a></li>
+            <li><a class="hover:text-white" href="#">Ditjen PP & PL</a></li>
+            <li><a class="hover:text-white" href="#">Jaminan Kesehatan Nasional</a></li>
+            <li><a class="hover:text-white" href="#">WHO</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-black/40">
+      <div class="mx-auto max-w-6xl px-4 py-6">
+        <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-white/10"></div>
+            <div class="text-xs text-white/60">
+              Copyright ©2026 Direktorat Surveilans dan Karantina Kesehatan —
+              Ditjen Pencegahan dan Pengendalian Penyakit — Kementerian Kesehatan RI
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-full bg-sky-500/80"></div>
+            <div class="text-sm font-extrabold text-sky-200">Balai Besar Sertifikasi Elektronik</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 hidden z-50">
+    <div class="rounded-2xl border border-slate-200 bg-slate-900 px-4 py-3 text-sm text-white shadow-lg">
+      <span id="toastText">—</span>
+    </div>
+  </div>
+
+  <script>
+    // set date
+    document.getElementById("tglPermohonan").textContent =
+      new Date().toLocaleDateString("id-ID", { day:"2-digit", month:"long", year:"numeric" });
+
+    const $ = (s, r=document) => r.querySelector(s);
+    const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+    function toast(msg){
+      $("#toastText").textContent = msg;
+      const t = $("#toast");
+      t.classList.remove("hidden");
+      clearTimeout(toast._t);
+      toast._t = setTimeout(()=>t.classList.add("hidden"), 2200);
+    }
+
+    // Upload preview
+    const docs = $("#docs");
+    const docsName = $("#docsName");
+    docs.addEventListener("change", (e) => {
+      const files = Array.from(e.target.files || []);
+      docsName.textContent = files.length ? files.map(f => f.name).join(", ") : "—";
+    });
+
+    const showErr = (key, on) => {
+      const el = document.querySelector(`[data-err="${key}"]`);
+      if(!el) return;
+      el.classList.toggle("hidden", !on);
+    };
+
+    $("#planeForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // reset
+      document.querySelectorAll('[data-err]').forEach(x => x.classList.add("hidden"));
+      document.querySelectorAll('input, select, textarea').forEach(x => x.classList.remove("border-red-400"));
+
+      let ok = true;
+
+      const req = [
+        "operatorName","email","phone","address",
+        "tailNo","aircraftType","certType",
+        "balai","airport","inspectDate","docs"
+      ];
+
+      req.forEach(id => {
+        const el = document.getElementById(id);
+        const hasVal = (el.type === "file") ? (el.files && el.files.length > 0) : !!el.value;
+        if(!hasVal){
+          ok = false;
+          el.classList.add("border-red-400");
+          showErr(id, true);
+        }
+      });
+
+      // email validity
+      const email = $("#email");
+      if(email.value && !email.checkValidity()){
+        ok = false;
+        email.classList.add("border-red-400");
+        showErr("email", true);
+      }
+
+      if(!ok){
+        toast("Mohon lengkapi field wajib (*) dan perbaiki error.");
+        alert("Mohon lengkapi field wajib (*) dan perbaiki error.");
+        return;
+      }
+
+      alert("Demo UI: Permohonan sertifikat pesawat terkirim (belum terhubung backend).");
+    });
+  </script>
+</body>
+</html>
